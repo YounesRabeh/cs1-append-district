@@ -94,16 +94,3 @@ For a field to be modified, both of these must be enabled:
 ## License
 
 MIT. See `LICENSE`.
-
-## Screenshots
-
-<p align="center">
-<img src="github/img/mod_screenshot02.png" width="300">
-<img src="github/img/mod_screenshot05.png" width="300">
-<img src="github/img/mod_screenshot03.png" width="300">
-</p>
-
-<p align="center">
-<img src="github/img/mod_screenshot04.png" width="300">
-<img src="github/img/mod_screenshot01.png" width="300">
-</p>
