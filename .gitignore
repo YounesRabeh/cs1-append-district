@@ -1,0 +1,32 @@
+# Build outputs
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Tt]est[Rr]esult*/
+artifacts/
+
+# Generated mod assembly copied to project root by post-build
+AppendDistrict.dll
+*.pdb
+*.mdb
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.vscode/
+Directory.Build.user.props
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+packages/
+!packages/build/
+
+# OS files
+.DS_Store
+Thumbs.db
