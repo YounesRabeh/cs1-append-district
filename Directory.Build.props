@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <BuildOutputRoot Condition="'$(BuildOutputRoot)' == '' and '$(TMPDIR)' != ''">$([System.IO.Path]::Combine('$(TMPDIR)', 'AppendDistrict'))/</BuildOutputRoot>
+    <BuildOutputRoot Condition="'$(BuildOutputRoot)' == '' and '$(TEMP)' != ''">$([System.IO.Path]::Combine('$(TEMP)', 'AppendDistrict'))/</BuildOutputRoot>
+    <BuildOutputRoot Condition="'$(BuildOutputRoot)' == '' and '$(TMP)' != ''">$([System.IO.Path]::Combine('$(TMP)', 'AppendDistrict'))/</BuildOutputRoot>
+    <BuildOutputRoot Condition="'$(BuildOutputRoot)' == ''">/tmp/AppendDistrict/</BuildOutputRoot>
+
+    <BaseOutputPath>$(BuildOutputRoot)bin/</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(BuildOutputRoot)obj/</BaseIntermediateOutputPath>
+    <MSBuildProjectExtensionsPath>$(BaseIntermediateOutputPath)</MSBuildProjectExtensionsPath>
+  </PropertyGroup>
+</Project>

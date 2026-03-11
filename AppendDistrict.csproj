@@ -1,0 +1,100 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <NuGetAudit>false</NuGetAudit>
+    <AssemblyName>AppendDistrict</AssemblyName>
+    <RootNamespace>AppendDistrict</RootNamespace>
+    <AssemblyTitle>Append District</AssemblyTitle>
+    <Title>Append District</Title>
+    <Product>Append District</Product>
+    <Description>Appends district names to vehicle and citizen info fields.</Description>
+    <Authors>TheYuyuBoy</Authors>
+    <Company>TheYuyuBoy</Company>
+    <VersionPrefix>1.1.5</VersionPrefix>
+    <Version>$(VersionPrefix)</Version>
+    <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
+    <FileVersion>$(VersionPrefix).0</FileVersion>
+    <InformationalVersion>$(VersionPrefix)</InformationalVersion>
+  </PropertyGroup>
+
+  <Import Project="Directory.Build.user.props" Condition="Exists('Directory.Build.user.props')" />
+
+  <PropertyGroup>
+    <CitiesSkylinesManagedDir Condition="'$(CitiesSkylinesManagedDir)' == '' and Exists('$(HOME)/.local/share/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed')">$(HOME)/.local/share/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed</CitiesSkylinesManagedDir>
+    <CitiesSkylinesManagedDir Condition="'$(CitiesSkylinesManagedDir)' == '' and Exists('$(HOME)/.steam/steam/steamapps/common/Cities_Skylines/Cities_Data/Managed')">$(HOME)/.steam/steam/steamapps/common/Cities_Skylines/Cities_Data/Managed</CitiesSkylinesManagedDir>
+    <CitiesSkylinesManagedDir Condition="'$(CitiesSkylinesManagedDir)' == '' and Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed')">$(HOME)/Library/Application Support/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed</CitiesSkylinesManagedDir>
+    <CitiesSkylinesManagedDir Condition="'$(CitiesSkylinesManagedDir)' == '' and Exists('$(ProgramFiles(x86))/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed')">$(ProgramFiles(x86))/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed</CitiesSkylinesManagedDir>
+    <CitiesSkylinesManagedDir Condition="'$(CitiesSkylinesManagedDir)' == '' and Exists('$(ProgramFiles)/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed')">$(ProgramFiles)/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed</CitiesSkylinesManagedDir>
+
+    <SteamWorkshopGameDir Condition="'$(SteamWorkshopGameDir)' == '' and Exists('$(HOME)/.local/share/Steam/steamapps/workshop/content/255710')">$(HOME)/.local/share/Steam/steamapps/workshop/content/255710</SteamWorkshopGameDir>
+    <SteamWorkshopGameDir Condition="'$(SteamWorkshopGameDir)' == '' and Exists('$(HOME)/.steam/steam/steamapps/workshop/content/255710')">$(HOME)/.steam/steam/steamapps/workshop/content/255710</SteamWorkshopGameDir>
+    <SteamWorkshopGameDir Condition="'$(SteamWorkshopGameDir)' == '' and Exists('$(HOME)/Library/Application Support/Steam/steamapps/workshop/content/255710')">$(HOME)/Library/Application Support/Steam/steamapps/workshop/content/255710</SteamWorkshopGameDir>
+    <SteamWorkshopGameDir Condition="'$(SteamWorkshopGameDir)' == '' and Exists('$(ProgramFiles(x86))/Steam/steamapps/workshop/content/255710')">$(ProgramFiles(x86))/Steam/steamapps/workshop/content/255710</SteamWorkshopGameDir>
+    <SteamWorkshopGameDir Condition="'$(SteamWorkshopGameDir)' == '' and Exists('$(ProgramFiles)/Steam/steamapps/workshop/content/255710')">$(ProgramFiles)/Steam/steamapps/workshop/content/255710</SteamWorkshopGameDir>
+
+    <HarmonyDllPath Condition="'$(HarmonyDllPath)' == '' and Exists('$(SteamWorkshopGameDir)/1680642819/0Harmony.dll')">$(SteamWorkshopGameDir)/1680642819/0Harmony.dll</HarmonyDllPath>
+    <HarmonyDllPath Condition="'$(HarmonyDllPath)' == '' and Exists('$(SteamWorkshopGameDir)/2040656402/CitiesHarmony.Harmony.dll')">$(SteamWorkshopGameDir)/2040656402/CitiesHarmony.Harmony.dll</HarmonyDllPath>
+    <HarmonyDllPath Condition="'$(HarmonyDllPath)' == '' and Exists('$(CitiesSkylinesManagedDir)/0Harmony.dll')">$(CitiesSkylinesManagedDir)/0Harmony.dll</HarmonyDllPath>
+
+    <ModOutputDir Condition="'$(ModOutputDir)' == '' and Exists('$(HOME)/.local/share/Colossal Order/Cities_Skylines/Addons/Mods')">$(HOME)/.local/share/Colossal Order/Cities_Skylines/Addons/Mods/AppendDistrict</ModOutputDir>
+    <ModOutputDir Condition="'$(ModOutputDir)' == '' and Exists('$(HOME)/Library/Application Support/Colossal Order/Cities_Skylines/Addons/Mods')">$(HOME)/Library/Application Support/Colossal Order/Cities_Skylines/Addons/Mods/AppendDistrict</ModOutputDir>
+    <ModOutputDir Condition="'$(ModOutputDir)' == '' and Exists('$(LOCALAPPDATA)/Colossal Order/Cities_Skylines/Addons/Mods')">$(LOCALAPPDATA)/Colossal Order/Cities_Skylines/Addons/Mods/AppendDistrict</ModOutputDir>
+    <ModOutputDir Condition="'$(ModOutputDir)' == ''">$(MSBuildProjectDirectory)</ModOutputDir>
+  </PropertyGroup>
+
+  <Target Name="ValidateExternalDependencies" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(CitiesSkylinesManagedDir)' == ''"
+           Text="Cities: Skylines managed folder was not found. Set CitiesSkylinesManagedDir in Directory.Build.user.props or pass -p:CitiesSkylinesManagedDir=... on the build command." />
+    <Error Condition="!Exists('$(CitiesSkylinesManagedDir)/Assembly-CSharp.dll')"
+           Text="Missing Assembly-CSharp.dll under CitiesSkylinesManagedDir='$(CitiesSkylinesManagedDir)'." />
+    <Error Condition="!Exists('$(CitiesSkylinesManagedDir)/ICities.dll')"
+           Text="Missing ICities.dll under CitiesSkylinesManagedDir='$(CitiesSkylinesManagedDir)'." />
+    <Error Condition="!Exists('$(CitiesSkylinesManagedDir)/ColossalManaged.dll')"
+           Text="Missing ColossalManaged.dll under CitiesSkylinesManagedDir='$(CitiesSkylinesManagedDir)'." />
+    <Error Condition="!Exists('$(CitiesSkylinesManagedDir)/UnityEngine.dll')"
+           Text="Missing UnityEngine.dll under CitiesSkylinesManagedDir='$(CitiesSkylinesManagedDir)'." />
+    <Error Condition="'$(HarmonyDllPath)' == '' or !Exists('$(HarmonyDllPath)')"
+           Text="Harmony DLL was not found. Set HarmonyDllPath in Directory.Build.user.props or pass -p:HarmonyDllPath=... on the build command." />
+  </Target>
+
+  <ItemGroup>
+    <Compile Include="**/*.cs" Exclude="artifacts/**/*.cs;bin/**/*.cs;obj/**/*.cs" />
+
+    <Reference Include="0Harmony">
+      <HintPath>$(HarmonyDllPath)</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(CitiesSkylinesManagedDir)/Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <Reference Include="ICities">
+      <HintPath>$(CitiesSkylinesManagedDir)/ICities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <Reference Include="ColossalManaged">
+      <HintPath>$(CitiesSkylinesManagedDir)/ColossalManaged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine">
+      <HintPath>$(CitiesSkylinesManagedDir)/UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="Build" Condition="'$(ModOutputDir)' != ''">
+    <MakeDir Directories="$(ModOutputDir)" />
+    <Copy
+      SourceFiles="$(TargetPath)"
+      DestinationFolder="$(ModOutputDir)" />
+  </Target>
+
+</Project>
