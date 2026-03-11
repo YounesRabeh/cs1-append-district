@@ -5,13 +5,6 @@ Append District is a **Cities: Skylines (CS1)** mod that appends district names 
 This allows you to quickly see **which district a vehicle or citizen is associated/heading with/to**, making it easier to understand traffic, services, and citizen behaviour in your city.
 
 **[Steam Workshop Item](https://steamcommunity.com/sharedfiles/filedetails/?id=3683007026)**
-## Screenshots
-
-![Options Screen](github/img/mod_screenshot02.png)
-![Service Vehicle Example](github/img/mod_screenshot05.png)
-![Police Vehicle Example](github/img/mod_screenshot03.png)
-![Citizen Vehicle Example](github/img/mod_screenshot04.png)
-![Detailed Citizen Example](github/img/mod_screenshot01.png)
 
 ## What It Does
 
@@ -101,3 +94,16 @@ For a field to be modified, both of these must be enabled:
 ## License
 
 MIT. See `LICENSE`.
+
+## Screenshots
+
+<p align="center">
+<img src="github/img/mod_screenshot02.png" width="300">
+<img src="github/img/mod_screenshot05.png" width="300">
+<img src="github/img/mod_screenshot03.png" width="300">
+</p>
+
+<p align="center">
+<img src="github/img/mod_screenshot04.png" width="300">
+<img src="github/img/mod_screenshot01.png" width="300">
+</p>
