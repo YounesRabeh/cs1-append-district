@@ -14,7 +14,7 @@
     <Description>Appends district names to vehicle and citizen info fields.</Description>
     <Authors>TheYuyuBoy</Authors>
     <Company>TheYuyuBoy</Company>
-    <VersionPrefix>1.1.5</VersionPrefix>
+    <VersionPrefix>1.1.6</VersionPrefix>
     <Version>$(VersionPrefix)</Version>
     <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
     <FileVersion>$(VersionPrefix).0</FileVersion>

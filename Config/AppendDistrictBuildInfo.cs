@@ -7,7 +7,7 @@ namespace AppendDistrict
         private const string Author = "TheYuyuBoy";
         private const string BaseDescription = "Appends district names to vehicle and citizen info fields.";
 
-        public static string ModDescription => BaseDescription + " v" + GetVersionForDisplay() + " by " + Author;
+        public static string ModDescription => BaseDescription + " v" + GetVersionForDisplay();
 
         // Builds a stable major.minor.build version string for UI display.
         private static string GetVersionForDisplay()
