@@ -21,6 +21,7 @@ Directory.Build.user.props
 *.userosscache
 *.sln.docstates
 *.DotSettings.user
+*.sh
 
 # NuGet
 *.nupkg

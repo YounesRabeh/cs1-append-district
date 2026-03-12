@@ -1,4 +1,4 @@
-# Append District
+![Append District Preview](img/PreviewImage-long.png)
 
 Append District is a **Cities: Skylines (CS1)** mod that appends district names to selected **vehicle** and **citizen** fields in World Info panels.
 
