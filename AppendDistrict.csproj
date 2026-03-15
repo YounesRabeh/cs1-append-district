@@ -14,7 +14,7 @@
     <Description>Appends district names to vehicle and citizen info fields.</Description>
     <Authors>TheYuyuBoy</Authors>
     <Company>TheYuyuBoy</Company>
-    <VersionPrefix>1.1.6</VersionPrefix>
+    <VersionPrefix>1.1.7</VersionPrefix>
     <Version>$(VersionPrefix)</Version>
     <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
     <FileVersion>$(VersionPrefix).0</FileVersion>
@@ -36,8 +36,8 @@
     <SteamWorkshopGameDir Condition="'$(SteamWorkshopGameDir)' == '' and Exists('$(ProgramFiles(x86))/Steam/steamapps/workshop/content/255710')">$(ProgramFiles(x86))/Steam/steamapps/workshop/content/255710</SteamWorkshopGameDir>
     <SteamWorkshopGameDir Condition="'$(SteamWorkshopGameDir)' == '' and Exists('$(ProgramFiles)/Steam/steamapps/workshop/content/255710')">$(ProgramFiles)/Steam/steamapps/workshop/content/255710</SteamWorkshopGameDir>
 
-    <HarmonyDllPath Condition="'$(HarmonyDllPath)' == '' and Exists('$(SteamWorkshopGameDir)/1680642819/0Harmony.dll')">$(SteamWorkshopGameDir)/1680642819/0Harmony.dll</HarmonyDllPath>
     <HarmonyDllPath Condition="'$(HarmonyDllPath)' == '' and Exists('$(SteamWorkshopGameDir)/2040656402/CitiesHarmony.Harmony.dll')">$(SteamWorkshopGameDir)/2040656402/CitiesHarmony.Harmony.dll</HarmonyDllPath>
+    <HarmonyDllPath Condition="'$(HarmonyDllPath)' == '' and Exists('$(SteamWorkshopGameDir)/2040656402/0Harmony.dll')">$(SteamWorkshopGameDir)/2040656402/0Harmony.dll</HarmonyDllPath>
     <HarmonyDllPath Condition="'$(HarmonyDllPath)' == '' and Exists('$(CitiesSkylinesManagedDir)/0Harmony.dll')">$(CitiesSkylinesManagedDir)/0Harmony.dll</HarmonyDllPath>
 
     <ModOutputDir Condition="'$(ModOutputDir)' == '' and Exists('$(HOME)/.local/share/Colossal Order/Cities_Skylines/Addons/Mods')">$(HOME)/.local/share/Colossal Order/Cities_Skylines/Addons/Mods/AppendDistrict</ModOutputDir>
@@ -58,7 +58,7 @@
     <Error Condition="!Exists('$(CitiesSkylinesManagedDir)/UnityEngine.dll')"
            Text="Missing UnityEngine.dll under CitiesSkylinesManagedDir='$(CitiesSkylinesManagedDir)'." />
     <Error Condition="'$(HarmonyDllPath)' == '' or !Exists('$(HarmonyDllPath)')"
-           Text="Harmony DLL was not found. Set HarmonyDllPath in Directory.Build.user.props or pass -p:HarmonyDllPath=... on the build command." />
+           Text="Harmony 2 DLL was not found. Install/enable Cities Harmony and set HarmonyDllPath in Directory.Build.user.props or pass -p:HarmonyDllPath=... on the build command." />
   </Target>
 
   <ItemGroup>
