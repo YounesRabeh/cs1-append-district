@@ -3,8 +3,8 @@
     <!-- Required: Cities: Skylines managed folder -->
     <CitiesSkylinesManagedDir>/path/to/Cities_Skylines/Cities_Data/Managed</CitiesSkylinesManagedDir>
 
-    <!-- Required when auto-detection cannot find Harmony -->
-    <HarmonyDllPath>/path/to/0Harmony.dll</HarmonyDllPath>
+    <!-- Required when auto-detection cannot find Harmony 2 -->
+    <HarmonyDllPath>/path/to/CitiesHarmony.Harmony.dll</HarmonyDllPath>
 
     <!-- Optional: where the built DLL is copied after build -->
     <ModOutputDir>/path/to/Cities_Skylines/Addons/Mods/AppendDistrict</ModOutputDir>

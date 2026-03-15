@@ -1,4 +1,4 @@
-using Harmony;
+using HarmonyLib;
 using ICities;
 
 namespace AppendDistrict
@@ -21,7 +21,7 @@ namespace AppendDistrict
     public class AppendDistrictLoading : LoadingExtensionBase
     {
         private const string HarmonyId = "com.TheYuyuBoy.appenddistrict";
-        private HarmonyInstance _harmony;
+        private Harmony _harmony;
 
         /// <summary>
         /// Applies Harmony patches when a game level is loaded.
@@ -32,7 +32,7 @@ namespace AppendDistrict
             if (_harmony != null)
                 return;
 
-            _harmony = HarmonyInstance.Create(HarmonyId);
+            _harmony = new Harmony(HarmonyId);
             _harmony.PatchAll();
             AppendDistrictLog.Info("Lifecycle", "Harmony patches applied. mode=" + mode);
         }

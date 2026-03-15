@@ -15,7 +15,7 @@ This allows you to quickly see **which district a vehicle or citizen is associat
 ## Requirements
 
 - Cities: Skylines (CS1).
-- Harmony available to the game (`0Harmony.dll` or CitiesHarmony Harmony DLL).
+- Cities Harmony (Workshop item `2040656402`) enabled so Harmony 2 is available to the game.
 - .NET SDK with `net472` support.
 
 ## Build
@@ -51,7 +51,7 @@ If detection fails, use either:
 ```bash
 dotnet build AppendDistrict.sln \
   -p:CitiesSkylinesManagedDir="/path/to/Cities_Skylines/Cities_Data/Managed" \
-  -p:HarmonyDllPath="/path/to/0Harmony.dll" \
+  -p:HarmonyDllPath="/path/to/CitiesHarmony.Harmony.dll" \
   -p:ModOutputDir="/path/to/Cities_Skylines/Addons/Mods/AppendDistrict" \
   -p:BuildOutputRoot="/tmp/AppendDistrict"
 ```
@@ -88,6 +88,8 @@ For a field to be modified, both of these must be enabled:
   Set `CitiesSkylinesManagedDir`.
 - Build error about missing Harmony DLL:
   Set `HarmonyDllPath`.
+- Red Content Manager error `Failed to load the mod's dll file or its dependency`:
+  Ensure Cities Harmony is subscribed and enabled, remove duplicate/old `AppendDistrict.dll` copies from local Mods folders, then fully restart CS1.
 - Build succeeds but old behavior in game:
   Fully restart CS1 (not only reload a save).
 
